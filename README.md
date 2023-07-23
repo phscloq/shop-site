@@ -1,5 +1,5 @@
 ## Shopping Cart Project
-This project made specifically for shopping cart feature. The website will be a functional shopping site ready to be used.
+This project  specifically for shopping cart feature, it still on going. The website will be a functional shopping site ready to be used.
 Near future ToDo's:
 - [ ] Admin panel
 - [ ] Database implemantation
