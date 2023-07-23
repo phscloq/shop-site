@@ -1,12 +1,12 @@
 ## Shopping Cart Project
 This project made specifically for shopping cart feature. The website will be a functional shopping site ready to be used.
 Near future ToDo's:
-[ ] Admin panel
-[ ] Database implemantation
-[ ] Registration system
-[ ] Stock controll
-[ ] Product detail page
-[ ] Recommendation system
+- [ ] Admin panel
+- [ ] Database implemantation
+- [ ] Registration system
+- [ ] Stock controll
+- [ ] Product detail page
+- [ ] Recommendation system
 ## Getting Started
 
 First, run the development server:
