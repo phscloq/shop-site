@@ -38,7 +38,7 @@ export default function ItemCart(){
                              <h3 className="text-xs ">{product.title}</h3>
                         </div>
                         <div className="">                          
-                            <p className=" text-base font-bold">Price: {product.price}</p>
+                            <p className=" text-base font-bold">Price: ${product.price}</p>
                         </div>
                         <div>
                               <button onClick={() => handleAddToCart(product)} 
