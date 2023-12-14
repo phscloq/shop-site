@@ -9,11 +9,7 @@ export default function ItemCart(){
       const filteredItemsArr:any=[];
 
       items.forEach((item)=>{
-        if(
-          item.title.toLowerCase().indexOf(
-            filterText.toLowerCase()
-          )=== -1
-        ){
+        if(item.title.toLowerCase().indexOf(filterText.toLowerCase())=== -1 ){
           return;
         }
         filteredItemsArr.push(item);
