@@ -3,10 +3,14 @@ import Link from "next/link";
 export default function OrderPreview() {
   const { cartItems, deleteItem, addToCart, hideBasket } = useShoppingCart();
   const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
-
+  if(totalItems===0){
+    hideBasket();
+  }
   return (
     <div className="absolute text-black bg-slate-50 border-2 
-     border-paynes-gray rounded-sm right-24 top-20 px-4 py-2">
+     border-paynes-gray rounded-sm right-24 top-20 px-4 py-2
+    
+     ">
       <h3>My basket({totalItems})</h3>
       {cartItems.map((item) => (
         <div key={item.id} className=" mb-2">
