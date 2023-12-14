@@ -14,10 +14,10 @@ return (
             {cartItems.map((item)=>(
             <div key={item.id} className="flex items-center justify-between shadow-newco rounded-xl p-6 mb-8">
                 <div className="flex gap-4">
-                    <img src={item.image} className="h-32"></img>
+                    <img src={item.image} className="h-32 max-w-[116px]"></img>
                     <div className=" max-w-md  pl-2">
                         <h2 className="font-bold text-base">{item.title}</h2>
-                        <p className=" text-xs leading-6">{item.description}</p>
+                        <p className=" text-xs leading-6  truncate">{item.description}</p>
                     </div>
                 </div>
                 <div className="flex  gap-10 ">
@@ -30,7 +30,7 @@ return (
                                     onClick={()=>deleteItem(item)}>-</button>
                     
                     </div>
-                    <h3 className="text-orange-500 text-xl  px-2 w-max">{item.price}</h3>
+                    <h3 className="text-orange-500 text-xl  px-2 w-max">${item.price}</h3>
 
                             <button className={` text-red-600 font-bold`}
                                 onClick={()=>deleteItem(item)}
@@ -48,10 +48,19 @@ return (
                             <h1 className=" p-2 bg-orange-500 text-white font-bold">Summary</h1>
                             <div className="p-2 mb-4 leading-8">
                                 <p>Total cost:</p>
-                                <p className=" text-orange-500 font-bold">{cost}</p>
+                                <p className=" text-orange-500 font-bold">${cost}</p>
                             </div>
                         </div>
-                    <Link className="  bg-orange-500 hover:bg-orange-600 block text-center  text-white py-2" href='./'>Purchase</Link>
+                        <div className="p-2">
+                            <button 
+                                className=" w-full p-2  bg-orange-500
+                            active:transition  active:scale-95  
+                            duration-500 hover:bg-orange-600
+                            rounded-lg  text-white">
+                                Purchase
+                                </button>
+                        </div>
+                      
                     </div>
                 </div>
          
