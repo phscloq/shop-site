@@ -91,7 +91,7 @@ useEffect(()=>{
       .filter((item)=>item.quantity>0)
           );
   };
-  
+  /*Show Basket */
   const handleBasketState=()=>{
     if(!basket){
       setBasket(true);
@@ -100,7 +100,8 @@ useEffect(()=>{
   const hideBasket=()=>{
     setBasket(false);
   }
-  
+        /* if category home, so homepage, then all items will be on items*/
+
   const handleCategoryClick=(category:string)=>{
       setCategory(category);
       if(category==='all-men'){
@@ -111,7 +112,11 @@ useEffect(()=>{
         const filteredItemsII = allItems.filter((item) => item.category === 'jewelery');
         const mergedFilteredItems = [...filteredItems, ...filteredItemsII];
         setItems(mergedFilteredItems);
+      }else if(category==='home'){
+        setItems(allItems)
       }else{
+        console.log('last else called');
+        console.log(category);
         const filteredItems = allItems.filter((item) => item.category === category);
         setItems(filteredItems);
       }
