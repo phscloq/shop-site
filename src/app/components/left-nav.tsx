@@ -10,7 +10,7 @@ export default function LeftNavBar({activeCategory, onClick, tab}:NavbarProps){
     return (
         <nav className="text-black flex max-h-max ">
         <div className="sticky top-0 h-fit">
-        <button className="hover:bg-orange-300 hover:text-white p-2 rounded-md">Related categories</button>
+        <button className=" p-2 rounded-md">Related categories</button>
         <div className="flex flex-col border-2 rounded-md mt-2 p-2 gap-2">
         {tab==='electronics' &&  <button  onClick={()=>onClick("electronics")} className={`font-bold hover:underline ${activeCategory==='electronics' ? 'bg-orange-300' : ''}`}>Electronics</button>
 }       
