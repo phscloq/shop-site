@@ -21,7 +21,7 @@ export default function LeftNavBar({activeCategory, onClick, tab}:NavbarProps){
         onClick={()=>onClick('all-men')}
         className={`font-bold hover:underline `}>All</button>
         <button   onClick={()=>onClick("men's clothing")}
-        className={`font-bold hover:underline ${activeCategory==="men's clothing" ? 'bg-orange-300' : ''}`}>Men's Clothing</button>
+        className={`font-bold hover:underline ${activeCategory==="men's clothing" ? 'bg-orange-300' : ''}`}>Men&apos;s Clothing</button>
         <button  onClick={()=>onClick("jewelery")} 
         className={`font-bold hover:underline ${activeCategory==='jewelery' ? 'bg-orange-300' : ''}`}>Jewelery</button>
         </> }
@@ -31,7 +31,7 @@ export default function LeftNavBar({activeCategory, onClick, tab}:NavbarProps){
         onClick={()=>onClick('all-women')}
         className={`font-bold hover:underline `}>All</button>
         <button   onClick={()=>onClick("women's clothing")}
-        className={`font-bold hover:underline ${activeCategory==="women's clothing" ? 'bg-orange-300' : ''}`}>Women's Clothing</button>
+        className={`font-bold hover:underline ${activeCategory==="women's clothing" ? 'bg-orange-300' : ''}`}>Women&apos;s Clothing</button>
         <button  onClick={()=>onClick("jewelery")} 
         className={`font-bold hover:underline ${activeCategory==='jewelery' ? 'bg-orange-300' : ''}`}>Jewelery</button>
         </> }
