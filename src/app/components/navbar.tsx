@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image";
 import OrderPreview from "./order-preview"
 import { useShoppingCart } from "../lib/shopppingCartContext";
 interface NavbarProps{
@@ -28,7 +29,7 @@ export default function Navbar (){
 <div className="flex">
 {/*     <button className="rounded-md bg-orange-500 px-8">Sign-in</button>
  */}    <Link href="./cart">
-    <img src="/svgs/shop-icon.svg"></img>
+    <Image src="/svgs/shop-icon.svg" width={50} height={50} alt="Shopping basket icon" />
     <div className="absolute top-12 bg-g-red rounded-full w-6 items-center flex justify-center">
     <span className="  text-white">{totalItems}</span>
     </div>
