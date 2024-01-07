@@ -19,6 +19,9 @@ module.exports = {
       minHeight:{
         '80': '780px',
       },
+      fontSize:{
+        'xxs':'10px'
+      },
       flexGrow:{
         3: '3',
       },
