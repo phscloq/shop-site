@@ -6,7 +6,7 @@ export default function Cost(){
     const cost = cartItems.reduce((total, item)=> total + (item.price * item.quantity), 0);
     return(
         <div className={` sm:col-start-2 `}>
-            <div className={`text-black sm:sticky  top-8 border-2`}>
+            <div className={`text-black sm:sticky  sm:top-8 border-2`}>
                 <div className="">
                     <h1 className=" p-2 bg-orange-500 text-white font-bold">Summary</h1>
                     <div className="p-2 mb-4 leading-8">
