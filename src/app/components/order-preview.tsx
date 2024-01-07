@@ -1,4 +1,4 @@
-import { useShoppingCart } from "@/app/lib/shopppingCartContext";
+import { useShoppingCart } from "@/app/lib/context";
 import Link from "next/link";
 export default function OrderPreview() {
   const { cartItems, hideBasket } = useShoppingCart();

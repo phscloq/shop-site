@@ -1,5 +1,5 @@
 'use client'
-import { useShoppingCart } from "@/app/lib/shopppingCartContext"
+import { useShoppingCart } from "@/app/lib/context"
 import Cost from "./components/cost";
 import CheckOutItemCard from "./components/c.out-item-card";
 

@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { ShoppingCartProvider } from "./lib/shopppingCartContext";
+import { ShoppingCartProvider } from "./lib/context";
 import { AppProps } from "next/app";
 function MyApp({ Component, pageProps }: AppProps) {
   return (

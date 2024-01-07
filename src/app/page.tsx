@@ -1,5 +1,5 @@
 'use client'
-import { useShoppingCart } from "./lib/shopppingCartContext"
+import { useShoppingCart } from "./lib/context"
 import ItemsGrid from "./components/items-grid"
 export default function Home() {
   const {allItems} = useShoppingCart();

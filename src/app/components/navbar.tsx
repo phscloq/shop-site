@@ -1,10 +1,11 @@
 
 import OrderPreview from "./order-preview"
-import { useShoppingCart } from "../lib/shopppingCartContext";
+import { useShoppingCart } from "../lib/context";
 import SearchBar from "./components-nav/search-bar";
 import SubBar from "./components-nav/sub-bar";
 import Basket from "./components-nav/basket";
 import Logo from "./components-nav/logo";
+import SearchPopOver from "./components-nav/search-dropdown";
 interface NavbarProps{
     activeLink:string;
 }
@@ -12,7 +13,7 @@ interface NavbarProps{
 export default function Navbar (){
     const {basket} = useShoppingCart();
     return (
-            <nav className="w-full  max-h-24 pt-4  border-0 border-b-2 border-paynes-gray
+            <nav className="w-full  max-h-24 pt-4   border-b border-orange-700
                 bg-orange-600  text-white">
                 <div className="px-4 flex items-center justify-between gap-16">
                     <Logo />

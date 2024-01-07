@@ -1,6 +1,6 @@
 'use client'
 import LeftNavBar from "../../components/left-nav"
-import { useShoppingCart } from "@/app/lib/shopppingCartContext"
+import { useShoppingCart } from "@/app/lib/context"
 import ItemsGrid from "@/app/components/items-grid"
 /* export default function Products(){
     return (

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { useShoppingCart } from "../../lib/shopppingCartContext";
+import { useShoppingCart } from "../../lib/context";
 export default function Logo(){
     const { handleCategoryClick} = useShoppingCart();
     return (

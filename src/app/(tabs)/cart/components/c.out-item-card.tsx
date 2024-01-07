@@ -1,4 +1,4 @@
-import { useShoppingCart } from "@/app/lib/shopppingCartContext";
+import { useShoppingCart } from "@/app/lib/context";
 
 export default function CheckOutItemCard() {
     const {cartItems, addToCart, deleteItem} = useShoppingCart();
