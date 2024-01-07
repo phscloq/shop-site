@@ -11,12 +11,12 @@ export default function Structure({children}:StructureProps){
 
 
     return (
-<ShoppingCartProvider>
- <Navbar 
-     
-     />
-     {children}
-     <Footer />
-     </ShoppingCartProvider>
+    <ShoppingCartProvider>
+        <Navbar />
+        <div className="px-4  md:px-8 lg:px-0">
+            {children}
+        </div>
+        <Footer />
+    </ShoppingCartProvider>
     )
 }
