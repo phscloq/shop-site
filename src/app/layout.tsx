@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
    
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} lg:px-24`}>
       <Structure>
         {children}
       </Structure>
