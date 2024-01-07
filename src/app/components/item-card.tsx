@@ -1,4 +1,4 @@
-import { useShoppingCart } from "../lib/shopppingCartContext"
+import { useShoppingCart } from "../lib/context"
 
 export default function ItemCard(){
     const {  addToCart,  handleBasketState, items, filterText} = useShoppingCart();
@@ -6,17 +6,9 @@ export default function ItemCard(){
         addToCart(product);
         handleBasketState();
       };
-      const filteredItemsArr:any=[];
-
-      items.forEach((item)=>{
-        if(item.title.toLowerCase().indexOf(filterText.toLowerCase())=== -1 ){
-          return;
-        }
-        filteredItemsArr.push(item);
-      })
-      console.log(filteredItemsArr);
+    
       return(<>
-        {filteredItemsArr.map((product:any)=>{
+        {items.map((product:any)=>{
             return (
                 <div key={product.title} 
                 className=" bg-slate-50 flex flex-col 
@@ -55,4 +47,7 @@ export default function ItemCard(){
       )
      
     
+}
+function ItemDescription(){
+  
 }
