@@ -30,7 +30,7 @@ interface ShoppingCartContextProps {
   handleMobileSearchBarActive:(value:boolean)=>void;
 }
 
-const ShoppingCartContext = createContext<ShoppingCartContextProps>({
+export const ShoppingCartContext = createContext<ShoppingCartContextProps>({
   cartItems: [],
   basket: false,
   category: '',
