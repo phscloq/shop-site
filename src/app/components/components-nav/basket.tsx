@@ -9,8 +9,10 @@ export default function Basket(){
             <button
             onClick={()=>handleMobileSearchBarActive(true)}
             >
-                <Image className=" sm:hidden text-white"
-                src="/svgs/search-icon.svg" width={45} height={45} alt="Search icon" />
+                <label htmlFor="searchbarmobile">
+                    <Image className=" sm:hidden text-white"
+                    src="/svgs/search-icon.svg" width={45} height={45} alt="Search icon" />
+                </label>
             </button>
             
             <Link 
