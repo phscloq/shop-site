@@ -4,16 +4,15 @@ import SearchDropDown from "./search-dropdown";
 export default function SearchBar(){
     const { filterText, handleFilterTextChange, handleSearchBarActive, searchBarActive} = useShoppingCart();
     return (
-        <button onClick={()=>console.log("clicked")}>
-        <div className={`${searchBarActive  ? 'h-full fixed overflow-y-hidden w-screen top-0 left-0 backdrop-blur z-50': ''}
-        `}>
-            <div className={`${searchBarActive ? 'absolute left-0 top-0 w-screen z-50 block':'hidden sm:block'}
-            sm:block sm:relative sm:grow sm:shrink sm:basis-auto sm:w-auto text-black
+        
+       
+            <div className={`hidden sm:block w-96 h-full relative
+              text-black   flex-initial
             `}>
                 
-                <input className="w-full text-xl py-6 px-4
+                <input className="w-full text-xl p-2 
                 sm:active:rounded-t-lg
-                sm:rounded-md sm:p-2 sm:w-3/4 sm:active:border sm:active:border-orange-500"
+                sm:rounded-md sm:active:border sm:active:border-orange-500"
                 value={filterText}
                 onChange={(e)=>handleFilterTextChange(e)}
                 onFocus={()=>handleSearchBarActive(true)}
@@ -22,7 +21,33 @@ export default function SearchBar(){
                 ></input>
                 <SearchDropDown />
             </div>
-        </div>
-        </button>
+       
+    
+       
     )
+}
+
+export function SearchBarMobile(){
+    const { filterText, handleFilterTextChange, mobileSearchBarActive, handleMobileSearchBarActive} = useShoppingCart();
+
+return (
+    <div className={`${mobileSearchBarActive  ? 'h-full fixed overflow-y-hidden w-screen top-0 left-0 backdrop-blur z-50': ''}
+        w-3/5 lg:hidden`}>
+            <div className={`${mobileSearchBarActive ? 'absolute left-0 top-0 w-screen z-50 block':'hidden'}
+             text-black
+            `}>
+                
+                <input className="w-full text-xl py-6 px-4
+                sm:active:rounded-t-lg
+                sm:rounded-md sm:p-2 sm:w-3/4 sm:active:border sm:active:border-orange-500"
+                value={filterText}
+                onChange={(e)=>handleFilterTextChange(e)}
+                onFocus={()=>handleMobileSearchBarActive(true)}
+                onBlur={()=>handleMobileSearchBarActive(false)}
+                placeholder="Search for the product"
+                ></input>
+                <SearchDropDown />
+            </div>
+        </div>
+)
 }
