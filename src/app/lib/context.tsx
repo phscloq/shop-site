@@ -19,6 +19,7 @@ interface ShoppingCartContextProps {
   filterText: string;
   filteredItems: Product[];
   searchBarActive: Boolean;
+  mobileSearchBarActive: Boolean;
   addToCart: (product: Product) => void;
   deleteItem: (product: Product) => void;
   handleBasketState: () => void;
@@ -26,6 +27,7 @@ interface ShoppingCartContextProps {
   handleCategoryClick:(category:string)=>void;
   handleFilterTextChange:(e:any)=>void;
   handleSearchBarActive:(value:boolean)=>void;
+  handleMobileSearchBarActive:(value:boolean)=>void;
 }
 
 const ShoppingCartContext = createContext<ShoppingCartContextProps>({
@@ -37,6 +39,7 @@ const ShoppingCartContext = createContext<ShoppingCartContextProps>({
   filterText:'',
   filteredItems:[],
   searchBarActive: false,
+  mobileSearchBarActive: false,
   addToCart: () => {},
   deleteItem: ()=>{},
   handleBasketState: ()=>{},
@@ -44,6 +47,7 @@ const ShoppingCartContext = createContext<ShoppingCartContextProps>({
   handleCategoryClick: ()=>{},
   handleFilterTextChange: ()=>{},
   handleSearchBarActive: ()=>{},
+  handleMobileSearchBarActive: ()=>{},
 });
 
 export const useShoppingCart = () => useContext(ShoppingCartContext);
@@ -57,7 +61,7 @@ export function ShoppingCartProvider({ children }: { children: React.ReactNode }
   const [filterText, setFilterText] = useState('');
   const [filteredItems, setFilteredItems] = useState<Product[]>([]);
   const [searchBarActive, setSearchBarActive] = useState(false);
-
+  const [mobileSearchBarActive, setMobileSearchBarActive] = useState(false);
   useEffect(()=>{
   const fetchItems = async () => {
     try {
@@ -150,12 +154,14 @@ export function ShoppingCartProvider({ children }: { children: React.ReactNode }
   const handleSearchBarActive = (value:boolean) => {
       setSearchBarActive(value);
   }
-
+  const handleMobileSearchBarActive = (value:boolean) => {
+    setMobileSearchBarActive(value);
+}
 
 
   return (
     <ShoppingCartContext.Provider 
-    value={{searchBarActive, handleSearchBarActive, filteredItems, cartItems,
+    value={{handleMobileSearchBarActive,mobileSearchBarActive,searchBarActive, handleSearchBarActive, filteredItems, cartItems,
        basket, items, filterText,
      addToCart, deleteItem, handleBasketState, hideBasket,
       handleCategoryClick, category, allItems, handleFilterTextChange }}>
