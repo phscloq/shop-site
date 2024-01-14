@@ -2,12 +2,12 @@ import Link from "next/link"
 import Image from "next/image"
 import { useShoppingCart } from "../../lib/context";
 export default function Basket(){
-    const { cartItems, handleSearchBarActive} = useShoppingCart();
+    const { cartItems, handleMobileSearchBarActive} = useShoppingCart();
     const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
     return (
         <div className="flex gap-4">
             <button
-            onClick={()=>handleSearchBarActive(true)}
+            onClick={()=>handleMobileSearchBarActive(true)}
             >
                 <Image className=" sm:hidden text-white"
                 src="/svgs/search-icon.svg" width={45} height={45} alt="Search icon" />
