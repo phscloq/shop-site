@@ -20,6 +20,10 @@ interface ShoppingCartContextProps {
   filteredItems: Product[];
   searchBarActive: Boolean;
   mobileSearchBarActive: Boolean;
+  extended: Boolean;
+  tab: string;
+  selectedCategory: string;
+  pickedItem: any;
   addToCart: (product: Product) => void;
   deleteItem: (product: Product) => void;
   handleBasketState: () => void;
@@ -28,6 +32,10 @@ interface ShoppingCartContextProps {
   handleFilterTextChange:(e:any)=>void;
   handleSearchBarActive:(value:boolean)=>void;
   handleMobileSearchBarActive:(value:boolean)=>void;
+  setExtended:(value:boolean)=>void;
+  setTab:(value:string)=>void;
+  handleItemClick:(id:number)=>void;
+  handleItemQuantity:(amount:number)=>void;
 }
 
 export const ShoppingCartContext = createContext<ShoppingCartContextProps>({
@@ -40,6 +48,10 @@ export const ShoppingCartContext = createContext<ShoppingCartContextProps>({
   filteredItems:[],
   searchBarActive: false,
   mobileSearchBarActive: false,
+  extended:false,
+  tab:'home',
+  selectedCategory:'',
+  pickedItem:{id:0, title:'', price:0, category:'', description:'', image:'', quantity:0},
   addToCart: () => {},
   deleteItem: ()=>{},
   handleBasketState: ()=>{},
@@ -48,6 +60,10 @@ export const ShoppingCartContext = createContext<ShoppingCartContextProps>({
   handleFilterTextChange: ()=>{},
   handleSearchBarActive: ()=>{},
   handleMobileSearchBarActive: ()=>{},
+  setExtended: ()=>{},
+  setTab: ()=>{},
+  handleItemClick: ()=>{},
+  handleItemQuantity: ()=>{},
 });
 
 export const useShoppingCart = () => useContext(ShoppingCartContext);
@@ -62,20 +78,29 @@ export function ShoppingCartProvider({ children }: { children: React.ReactNode }
   const [filteredItems, setFilteredItems] = useState<Product[]>([]);
   const [searchBarActive, setSearchBarActive] = useState(false);
   const [mobileSearchBarActive, setMobileSearchBarActive] = useState(false);
-  useEffect(()=>{
+  const [extended, setExtended] = useState(false)
+  const [tab, setTab] = useState('home');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [pickedItem, setPickedItem] = useState({id:0, title:'', price:0, category:'', description:'', image:'', quantity:0});
+
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
   const fetchItems = async () => {
     try {
       const response = await fetch('https://fakestoreapi.com/products/');
       const data = await response.json();
-        setItems(data);
-          setAllItems(data);
+      console.log("data", data)
+        setAllItems(data);
+        setItems(data)
+        
+   
     } catch (error) {
       console.error('Error fetching items:', error);
     }
   };
-
-  fetchItems();
-}, []);
+  
 
 
 
@@ -88,7 +113,7 @@ export function ShoppingCartProvider({ children }: { children: React.ReactNode }
       )
       );
     }else{
-      setCartItems((prevItems) => [...prevItems, {...product, quantity:1}]);
+      setCartItems((prevItems) => [...prevItems, {...product}]);
 
     }
 
@@ -117,21 +142,31 @@ export function ShoppingCartProvider({ children }: { children: React.ReactNode }
 
   const handleCategoryClick=(category:string)=>{
       setCategory(category);
-      if(category==='all-men'){
+      if(category==='men'){ /* Items to list on men page: man clothing and jewelery */
         const filteredItems = allItems.filter((item) => item.category === "men's clothing" ||item.category === 'jewelery');
         setItems(filteredItems);
-      }else if(category==='all-women'){
+        localStorage.setItem('selectedCategory', category);
+      }else if(category==='women'){/* Items to list on women page: woman clothing and jewelery */
         const filteredItems = allItems.filter((item) => item.category === "women's clothing");
         const filteredItemsII = allItems.filter((item) => item.category === 'jewelery');
         const mergedFilteredItems = [...filteredItems, ...filteredItemsII];
         setItems(mergedFilteredItems);
-      }else if(category==='home'){
+        localStorage.setItem('selectedCategory', category);
+
+      }else if(category==='home'){/* Items to list on homepage page: everything */
         setItems(allItems)
-      }else{
+        localStorage.setItem('selectedCategory', category);
+
+      }else{ /* Items to list on electronics and jewelery pages*/
         console.log('last else called');
         console.log(category);
+        console.log(allItems);
+        console.log(items);
         const filteredItems = allItems.filter((item) => item.category === category);
         setItems(filteredItems);
+        console.log(filteredItems)
+        localStorage.setItem('selectedCategory', category);
+
       }
     }
 
@@ -157,11 +192,22 @@ export function ShoppingCartProvider({ children }: { children: React.ReactNode }
   const handleMobileSearchBarActive = (value:boolean) => {
     setMobileSearchBarActive(value);
 }
+const handleItemClick = (id:number) => {
+  const clickedItem = allItems.find((item)=>item.id===id);
+  setPickedItem(clickedItem!);
+  console.log(clickedItem)
+}
 
+const handleItemQuantity = (amount:number)=>{
+  pickedItem.quantity = amount;
+}
 
   return (
     <ShoppingCartContext.Provider 
-    value={{handleMobileSearchBarActive,mobileSearchBarActive,searchBarActive, handleSearchBarActive, filteredItems, cartItems,
+    value={{handleItemQuantity,
+      pickedItem, handleItemClick, selectedCategory, tab, setTab,
+      extended, setExtended, handleMobileSearchBarActive,mobileSearchBarActive,
+      searchBarActive, handleSearchBarActive, filteredItems, cartItems,
        basket, items, filterText,
      addToCart, deleteItem, handleBasketState, hideBasket,
       handleCategoryClick, category, allItems, handleFilterTextChange }}>
