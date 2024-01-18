@@ -120,13 +120,19 @@ fetchData();
 const handleCategoryClick = (category:string)=>{
   let filteredData;
   switch (category) {
-    case 'men':
+    case 'men&jewelery':
       filteredData = allItems.filter((item:Product) => item.category === "men's clothing" || item.category === 'jewelery');
       break;
-    case 'women':
+    case 'women&jewelery':
       let filteredData1 = allItems.filter((item:Product) => item.category === "women's clothing");
       let filteredData2 = allItems.filter((item:Product) => item.category === 'jewelery');
       filteredData = [...filteredData1, ...filteredData2];
+      break;
+    case 'men':
+      filteredData = allItems.filter((item:Product) => item.category === "men's clothing");
+      break;
+    case 'women':
+      filteredData = allItems.filter((item:Product) => item.category === "women's clothing");
       break;
     case 'jewelery':
       filteredData = allItems.filter((item:Product) => item.category === 'jewelery');
