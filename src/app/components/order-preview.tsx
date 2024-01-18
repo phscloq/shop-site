@@ -72,7 +72,7 @@ function Buttons(){
   return (
     <div className="flex gap-4 text-white mt-2">
       <Link  className="bg-orange-600 rounded-sm px-4 py-1"
-      href='./cart' onClick={()=>hideBasket()}>
+      href='/cart' onClick={()=>hideBasket()}>
         Order
       </Link> 
       <button onClick={()=>hideBasket()} 

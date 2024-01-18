@@ -17,10 +17,10 @@ export default function Basket(){
             
             <Link 
             className="relative"
-            href="./cart">
+            href="/cart">
                 <Image src="/svgs/shop-icon.svg" width={50} height={50} alt="Shopping basket icon" />
                 <div 
-                className="absolute top-8  z-40 bg-g-red rounded-full 
+                className="absolute top-8  z-10 bg-g-red rounded-full 
                 w-6 h-6  items-center flex justify-center">
                     <span 
                     className=" text-sm text-white">
