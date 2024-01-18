@@ -1,12 +1,11 @@
 import Link from "next/link";
 import { useShoppingCart } from "../lib/context"
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function ItemCard(){
-    const {  addToCart,  handleBasketState, items, category, handleItemClick} = useShoppingCart();
-    const handleAddToCart = (product: any) => {
-        addToCart(product);
-        handleBasketState();
-      };
+    const {  items, handleItemClick} = useShoppingCart();
+    
     
       return(<>
         {items.map((product:any)=>{
