@@ -10,7 +10,7 @@ export default function SubBar(){
     <Link href='/products/men'  
     className={`${pathname=='/products/men' ? 'text-orange-800  border-b-2 border-orange-700':''} 
     font-bold hover:text-orange-800 hover:border-orange-700 hover:border-b-2 `}
-    onClick={()=>handleCategoryClick('men')}
+    onClick={()=>handleCategoryClick('men&jewelery')}
     >
         Men
     </Link>
@@ -18,7 +18,7 @@ export default function SubBar(){
     <Link href='/products/women'   
     className={`${pathname=='/products/women' ? 'text-orange-800  border-b-2 border-orange-700':''} 
     font-bold hover:text-orange-800 hover:border-orange-700 hover:border-b-2`}
-    onClick={()=>handleCategoryClick('women')}
+    onClick={()=>handleCategoryClick('women&jewelery')}
 
     >
         Women
