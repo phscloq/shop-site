@@ -5,10 +5,9 @@ import { useShoppingCart } from "../lib/context";
 
 interface NavbarProps{
     activeCategory:string;
-    onClick:any;
-    tab: string;
+     tab:string;
 }
-export default function LeftNavBar({activeCategory, onClick, tab}:NavbarProps){
+export default function LeftNavBar({activeCategory, tab}:NavbarProps){
    
     
     return (
@@ -21,29 +20,28 @@ export default function LeftNavBar({activeCategory, onClick, tab}:NavbarProps){
                     <p className=" p-2 rounded-md">Related categories</p>
 
                     <div className={`flex flex-col border-2 rounded-md mt-2 p-2 gap-2`}>
-                    {tab==='electronics' &&  <button  onClick={()=>onClick("electronics")} 
+                    {tab==='electronics' &&  <button
                     className={`font-bold hover:underline 
                     ${activeCategory==='electronics' ? 'bg-orange-300' : ''}`}>Electronics</button>
                     }       
-            {tab==='jewelery' &&  <button  onClick={()=>onClick("jewelery")} className={`font-bold hover:underline ${activeCategory==='jewelery' ? 'bg-orange-300' : ''}`}>Jewelery</button>
+            {tab==='jewelery' &&  <button  className={`font-bold hover:underline ${activeCategory==='jewelery' ? 'bg-orange-300' : ''}`}>Jewelery</button>
             }       
                     {tab==='men' &&
                     <> <button 
-                    onClick={()=>onClick('all-men')}
-                    className={`font-bold hover:underline `}>All</button>
-                    <button   onClick={()=>onClick("men's clothing")}
+                                       className={`font-bold hover:underline `}>All</button>
+                    <button   
                     className={`font-bold hover:underline ${activeCategory==="men's clothing" ? 'bg-orange-300' : ''}`}>Men&apos;s Clothing</button>
-                    <button  onClick={()=>onClick("jewelery")} 
+                    <button  
                     className={`font-bold hover:underline ${activeCategory==='jewelery' ? 'bg-orange-300' : ''}`}>Jewelery</button>
                     </> }
                 
                     {tab==='women' &&
                     <> <button 
-                    onClick={()=>onClick('all-women')}
+                    
                     className={`font-bold hover:underline `}>All</button>
-                    <button   onClick={()=>onClick("women's clothing")}
+                    <button  
                     className={`font-bold hover:underline ${activeCategory==="women's clothing" ? 'bg-orange-300' : ''}`}>Women&apos;s Clothing</button>
-                    <button  onClick={()=>onClick("jewelery")} 
+                    <button  
                     className={`font-bold hover:underline ${activeCategory==='jewelery' ? 'bg-orange-300' : ''}`}>Jewelery</button>
                     </> }
                    
@@ -61,7 +59,7 @@ export default function LeftNavBar({activeCategory, onClick, tab}:NavbarProps){
 }
 
 export function LeftNavBarMobile(){
-    const {category, handleCategoryClick, extended,tab} = useShoppingCart();
+    const {category, extended,tab} = useShoppingCart();
     return (
         <nav className={` lg:hidden text-black z-40 ${
             extended ? "w-44 visible " : "w-0 invisible"
@@ -74,34 +72,27 @@ export function LeftNavBarMobile(){
                     <p className=" p-2 rounded-md">Related categories</p>
 
                     <div className={`flex flex-col border-2 rounded-md mt-2 p-2 gap-2`}>
-                        {tab==='electronics' &&  <button  onClick={()=>handleCategoryClick("electronics")} 
-                        className={`font-bold hover:underline 
+                        {tab==='electronics' &&  <button                       className={`font-bold hover:underline 
                         ${category==='electronics' ? 'bg-orange-300' : ''}`}>Electronics</button>
                         }   
 
-                        {tab==='jewelery' &&  <button  onClick={()=>handleCategoryClick("jewelery")} 
-                        className={`font-bold hover:underline ${category==='jewelery' ? 'bg-orange-300' : ''}`}>
+                        {tab==='jewelery' &&  <button                    className={`font-bold hover:underline ${category==='jewelery' ? 'bg-orange-300' : ''}`}>
                         Jewelery
                         </button>
             }       
                         {tab==='men' &&
                         <> <button 
-                        onClick={()=>handleCategoryClick('all-men')}
-                        className={`font-bold hover:underline `}>All</button>
-                        <button   onClick={()=>handleCategoryClick("men's clothing")}
-                        className={`font-bold hover:underline ${category==="men's clothing" ? 'bg-orange-300' : ''}`}>Men&apos;s Clothing</button>
-                        <button  onClick={()=>handleCategoryClick("jewelery")} 
-                        className={`font-bold hover:underline ${category==='jewelery' ? 'bg-orange-300' : ''}`}>Jewelery</button>
+                                        className={`font-bold hover:underline `}>All</button>
+                        <button                          className={`font-bold hover:underline ${category==="men's clothing" ? 'bg-orange-300' : ''}`}>Men&apos;s Clothing</button>
+                        <button                    className={`font-bold hover:underline ${category==='jewelery' ? 'bg-orange-300' : ''}`}>Jewelery</button>
                         </> }
                 
                         {tab==='women' &&
                         <> <button 
-                        onClick={()=>handleCategoryClick('all-women')}
-                        className={`font-bold hover:underline `}>All</button>
-                        <button   onClick={()=>handleCategoryClick("women's clothing")}
+                                          className={`font-bold hover:underline `}>All</button>
+                        <button   
                         className={`font-bold hover:underline ${category==="women's clothing" ? 'bg-orange-300' : ''}`}>Women&apos;s Clothing</button>
-                        <button  onClick={()=>handleCategoryClick("jewelery")} 
-                        className={`font-bold hover:underline ${category==='jewelery' ? 'bg-orange-300' : ''}`}>Jewelery</button>
+                        <button                    className={`font-bold hover:underline ${category==='jewelery' ? 'bg-orange-300' : ''}`}>Jewelery</button>
                         </> }
                    
                     </div>
