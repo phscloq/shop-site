@@ -5,7 +5,7 @@ Welcome to the Shopping Cart project! This website was created to implement a ro
 - **React, ContextAPI and Props:** Gain hands-on experience with React for building dynamic and responsive user interfaces. Utilize the powerful Context API for state management and props for component communication.
 - **Next.js, Tailwind CSS, and TypeScript:** This project leverages the benefits of Next.js for a smooth and optimized React application. Tailwind CSS is employed for utility-first styling, providing a streamlined development experience. TypeScript enhances code maintainability and development efficiency.
 
-- **API Integration:** Fetch data seamlessly from an [external API (Fake Store API)][1], enhancing the project's functionality and providing real-time updates.
+- **API Integration:** Fetch data seamlessly from an external API*, enhancing the project's functionality and providing real-time updates.
 
 ## Project Evolution
 
@@ -32,4 +32,4 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-[1]: https://fakestoreapi.com/ "Fake Store API"
+*: https://fakestoreapi.com/ "Fake Store API"
