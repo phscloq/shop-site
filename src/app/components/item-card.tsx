@@ -1,7 +1,8 @@
+import Link from "next/link";
 import { useShoppingCart } from "../lib/context"
 
 export default function ItemCard(){
-    const {  addToCart,  handleBasketState, items, filterText} = useShoppingCart();
+    const {  addToCart,  handleBasketState, items, category, handleItemClick} = useShoppingCart();
     const handleAddToCart = (product: any) => {
         addToCart(product);
         handleBasketState();
@@ -10,7 +11,8 @@ export default function ItemCard(){
       return(<>
         {items.map((product:any)=>{
             return (
-                <div key={product.title} 
+                <Link onClick={()=>handleItemClick(product.id)} key={product.title}  href={`/products/${product.id}`}>
+                <div 
                 className=" bg-slate-50 flex flex-col 
                 h-[340px] border-2 rounded-lg">
                     {/*img div */}
@@ -28,18 +30,12 @@ export default function ItemCard(){
                         <div className="">                          
                             <p className=" text-base font-bold">Price: ${product.price}</p>
                         </div>
-                        <div>
-                              <button onClick={() => handleAddToCart(product)} 
-                              className=" w-full p-2  bg-orange-500
-                          active:transition  active:scale-95  
-                          duration-500 hover:bg-orange-600
-                           rounded-lg  text-white">
-                            Add to cart
-                            </button>
-                        </div>
+                        
                        
                     </div>
                 </div>
+                </Link>
+                
             )
         })}
       </>
