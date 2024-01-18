@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useRef } from "react";
-
+import { GetData } from "../data/data";
+import { usePathname } from "next/navigation";
 interface Product {
   id: number;
   title: string;
@@ -28,7 +29,6 @@ interface ShoppingCartContextProps {
   deleteItem: (product: Product) => void;
   handleBasketState: () => void;
   hideBasket: ()=>void;
-  handleCategoryClick:(category:string)=>void;
   handleFilterTextChange:(e:any)=>void;
   handleSearchBarActive:(value:boolean)=>void;
   handleMobileSearchBarActive:(value:boolean)=>void;
@@ -36,6 +36,7 @@ interface ShoppingCartContextProps {
   setTab:(value:string)=>void;
   handleItemClick:(id:number)=>void;
   handleItemQuantity:(amount:number)=>void;
+  handleCategoryClick:(category:string)=>void;
 }
 
 export const ShoppingCartContext = createContext<ShoppingCartContextProps>({
@@ -56,7 +57,6 @@ export const ShoppingCartContext = createContext<ShoppingCartContextProps>({
   deleteItem: ()=>{},
   handleBasketState: ()=>{},
   hideBasket: ()=>{},
-  handleCategoryClick: ()=>{},
   handleFilterTextChange: ()=>{},
   handleSearchBarActive: ()=>{},
   handleMobileSearchBarActive: ()=>{},
@@ -64,6 +64,7 @@ export const ShoppingCartContext = createContext<ShoppingCartContextProps>({
   setTab: ()=>{},
   handleItemClick: ()=>{},
   handleItemQuantity: ()=>{},
+  handleCategoryClick: ()=>{},
 });
 
 export const useShoppingCart = () => useContext(ShoppingCartContext);
@@ -83,24 +84,62 @@ export function ShoppingCartProvider({ children }: { children: React.ReactNode }
   const [selectedCategory, setSelectedCategory] = useState('');
   const [pickedItem, setPickedItem] = useState({id:0, title:'', price:0, category:'', description:'', image:'', quantity:0});
 
-  useEffect(() => {
-    fetchItems();
+  const path = usePathname();
+  useEffect(() => {    
+    async function fetchData(){
+      const data = await GetData();
+      setAllItems(data);
+
+
+      let filteredData;
+    switch (path) {
+      case '/products/men':
+        filteredData = data.filter((item:Product) => item.category === "men's clothing" || item.category === 'jewelery');
+        break;
+      case '/products/women':
+        let filteredData1 = data.filter((item:Product) => item.category === "women's clothing");
+        let filteredData2 = data.filter((item:Product) => item.category === 'jewelery');
+        filteredData = [...filteredData1, ...filteredData2];
+        break;
+      case '/products/jewelery':
+        filteredData = data.filter((item:Product) => item.category === 'jewelery');
+        break;
+      case '/products/electronics':
+        filteredData = data.filter((item:Product) => item.category === 'electronics');
+        break;
+      default:
+        filteredData = data;
+    }
+    
+    setItems(filteredData);
+  }
+      
+fetchData();
   }, []);
 
-  const fetchItems = async () => {
-    try {
-      const response = await fetch('https://fakestoreapi.com/products/');
-      const data = await response.json();
-      console.log("data", data)
-        setAllItems(data);
-        setItems(data)
-        
-   
-    } catch (error) {
-      console.error('Error fetching items:', error);
-    }
-  };
+const handleCategoryClick = (category:string)=>{
+  let filteredData;
+  switch (category) {
+    case 'men':
+      filteredData = allItems.filter((item:Product) => item.category === "men's clothing" || item.category === 'jewelery');
+      break;
+    case 'women':
+      let filteredData1 = allItems.filter((item:Product) => item.category === "women's clothing");
+      let filteredData2 = allItems.filter((item:Product) => item.category === 'jewelery');
+      filteredData = [...filteredData1, ...filteredData2];
+      break;
+    case 'jewelery':
+      filteredData = allItems.filter((item:Product) => item.category === 'jewelery');
+      break;
+    case 'electronics':
+      filteredData = allItems.filter((item:Product) => item.category === 'electronics');
+      break;
+    default:
+      filteredData = allItems;
+  }
   
+  setItems(filteredData);
+}
 
 
 
@@ -138,38 +177,6 @@ export function ShoppingCartProvider({ children }: { children: React.ReactNode }
   const hideBasket=()=>{
     setBasket(false);
   }
-        /* if category home, so homepage, then all items will be on items*/
-
-  const handleCategoryClick=(category:string)=>{
-      setCategory(category);
-      if(category==='men'){ /* Items to list on men page: man clothing and jewelery */
-        const filteredItems = allItems.filter((item) => item.category === "men's clothing" ||item.category === 'jewelery');
-        setItems(filteredItems);
-        localStorage.setItem('selectedCategory', category);
-      }else if(category==='women'){/* Items to list on women page: woman clothing and jewelery */
-        const filteredItems = allItems.filter((item) => item.category === "women's clothing");
-        const filteredItemsII = allItems.filter((item) => item.category === 'jewelery');
-        const mergedFilteredItems = [...filteredItems, ...filteredItemsII];
-        setItems(mergedFilteredItems);
-        localStorage.setItem('selectedCategory', category);
-
-      }else if(category==='home'){/* Items to list on homepage page: everything */
-        setItems(allItems)
-        localStorage.setItem('selectedCategory', category);
-
-      }else{ /* Items to list on electronics and jewelery pages*/
-        console.log('last else called');
-        console.log(category);
-        console.log(allItems);
-        console.log(items);
-        const filteredItems = allItems.filter((item) => item.category === category);
-        setItems(filteredItems);
-        console.log(filteredItems)
-        localStorage.setItem('selectedCategory', category);
-
-      }
-    }
-
   const handleFilterTextChange = (e: any) => {
       const searchText = e.target.value.toLowerCase();
       // Check if the search bar is empty
@@ -197,20 +204,21 @@ const handleItemClick = (id:number) => {
   setPickedItem(clickedItem!);
   console.log(clickedItem)
 }
-
 const handleItemQuantity = (amount:number)=>{
   pickedItem.quantity = amount;
 }
 
+
+
   return (
     <ShoppingCartContext.Provider 
-    value={{handleItemQuantity,
+    value={{handleItemQuantity, handleCategoryClick,
       pickedItem, handleItemClick, selectedCategory, tab, setTab,
       extended, setExtended, handleMobileSearchBarActive,mobileSearchBarActive,
       searchBarActive, handleSearchBarActive, filteredItems, cartItems,
        basket, items, filterText,
      addToCart, deleteItem, handleBasketState, hideBasket,
-      handleCategoryClick, category, allItems, handleFilterTextChange }}>
+       category, allItems, handleFilterTextChange }}>
       {children}
     </ShoppingCartContext.Provider>
   );
