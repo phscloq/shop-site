@@ -6,7 +6,7 @@ const {filteredItems, searchBarActive, mobileSearchBarActive} = useShoppingCart(
         <div className={`${searchBarActive || mobileSearchBarActive ? 'block': 'hidden'} min-h-[240px] max-h-80 
         w-full z-10 
         overflow-auto absolute bg-slate-100  shadow-2xl sm:border border-orange-500`}>
-           <div className="px-4 py-2">
+           <div className={`px-4 py-2`}>
            <ul className="">
                 {filteredItems.map((item:any)=>{
                     return(
