@@ -16,7 +16,6 @@ export default function SearchBar(){
                 value={filterText}
                 onChange={(e)=>handleFilterTextChange(e)}
                 onFocus={()=>handleSearchBarActive(true)}
-                onBlur={()=>handleSearchBarActive(false)}
                 placeholder="Search for the product"
                 ></input>
                 <SearchDropDown />
@@ -43,7 +42,6 @@ return (
                 value={filterText}
                 onChange={(e)=>handleFilterTextChange(e)}
                 onFocus={()=>handleMobileSearchBarActive(true)}
-                onBlur={()=>handleMobileSearchBarActive(false)}
                 placeholder="Search for the product"
                 ></input>
                 <SearchDropDown />
