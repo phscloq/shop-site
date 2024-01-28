@@ -1,4 +1,5 @@
 <img src="./public/images/ss1.png" alt="Shopping web app homepage png" />
+<img src="./public/images/ss2.png" alt="Shopping web app item png" />
 
 # Shopping Cart Project
 Welcome to the Shopping Cart project! This website was created to implement a robust shopping cart feature while providing an opportunity to delve into React, Context API, and the usage of props. Although the project is continuously being updated and refined, the fundamental appearance is now established.
@@ -7,8 +8,8 @@ Welcome to the Shopping Cart project! This website was created to implement a ro
 - **React, ContextAPI and Props:** Gain hands-on experience with React for building dynamic and responsive user interfaces. Utilize the powerful Context API for state management and props for component communication.
 - **Next.js, Tailwind CSS, and TypeScript:** This project leverages the benefits of Next.js for a smooth and optimized React application. Tailwind CSS is employed for utility-first styling, providing a streamlined development experience. TypeScript enhances code maintainability and development efficiency.
 - **API Integration:** Fetch data seamlessly from an external API*, enhancing the project's functionality and providing real-time updates.
-<img src="./public/images/ss2.png" alt="Shopping web app item png" />
-<img src="./public/images/ss4.png" alt="Shopping web app shopping cart and basket png" />
+<img width="200px" src="./public/images/ss4.png" alt="Shopping web app shopping cart and basket png">
+
 ## Project Evolution
 
 While the project serves as a valuable learning experience, it is also a platform for ongoing enhancements. The current design draws inspiration from prominent e-commerce websites, providing a seamless and intuitive user experience.
