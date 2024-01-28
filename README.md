@@ -1,3 +1,5 @@
+<img src="./public/images/ss1.png" alt="Shopping web app homepage png" />
+
 # Shopping Cart Project
 Welcome to the Shopping Cart project! This website was created to implement a robust shopping cart feature while providing an opportunity to delve into React, Context API, and the usage of props. Although the project is continuously being updated and refined, the fundamental appearance is now established.
 ## Key Features:
