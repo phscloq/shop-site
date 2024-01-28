@@ -8,7 +8,7 @@ Welcome to the Shopping Cart project! This website was created to implement a ro
 - **Next.js, Tailwind CSS, and TypeScript:** This project leverages the benefits of Next.js for a smooth and optimized React application. Tailwind CSS is employed for utility-first styling, providing a streamlined development experience. TypeScript enhances code maintainability and development efficiency.
 - **API Integration:** Fetch data seamlessly from an external API*, enhancing the project's functionality and providing real-time updates.
 <img src="./public/images/ss2.png" alt="Shopping web app item png" />
-<img src="./public/images/ss3.png" alt="Shopping web app shopping cart and basket png" />
+<img src="./public/images/ss4.png" alt="Shopping web app shopping cart and basket png" />
 ## Project Evolution
 
 While the project serves as a valuable learning experience, it is also a platform for ongoing enhancements. The current design draws inspiration from prominent e-commerce websites, providing a seamless and intuitive user experience.
