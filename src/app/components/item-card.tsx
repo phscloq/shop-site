@@ -8,8 +8,8 @@ export default function ItemCard({items}:{items:Product[]}){
       return(<>
         {items.map((product:any, index:number)=>{
             return (
-                <Link href={`/products/${product.id}`} >
-                <div key={index}
+                <Link key={index} href={`/products/${product.id}`} >
+                <div 
                 className=" bg-white hover:shadow-md
                   border rounded-lg overflow-hidden">
                     {/*img div */}
