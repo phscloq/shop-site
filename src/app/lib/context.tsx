@@ -1,16 +1,9 @@
+'use client'
 import { createContext, useContext, useState, useEffect, useRef } from "react";
-import { GetData } from "../data/data";
+import { GetProducts } from "../data/GetProducts";
 import { usePathname } from "next/navigation";
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  category: string;
-  description: string;
-  image:any;
-  quantity:number;
-}
-
+import { Product } from "./interfaces";
+import { Cart } from "./interfaces";
 interface ShoppingCartContextProps {
   cartItems: Product[];
   basket: Boolean;
@@ -25,7 +18,7 @@ interface ShoppingCartContextProps {
   tab: string;
   selectedCategory: string;
   pickedItem: any;
-  addToCart: (product: Product) => void;
+  addToCart: (product: Cart) => void;
   deleteItem: (product: Product) => void;
   handleBasketState: () => void;
   hideBasket: ()=>void;
@@ -34,9 +27,10 @@ interface ShoppingCartContextProps {
   handleMobileSearchBarActive:(value:boolean)=>void;
   setExtended:(value:boolean)=>void;
   setTab:(value:string)=>void;
-  handleItemClick:(id:number)=>void;
+  /* handleItemClick:(id:number)=>void; */
   handleItemQuantity:(amount:number)=>void;
-  handleCategoryClick:(category:string)=>void;
+/*   handleCategoryClick:(category:string)=>void;
+ */  setFilteredItems:(value:Product[])=>void;
 }
 
 export const ShoppingCartContext = createContext<ShoppingCartContextProps>({
@@ -62,15 +56,16 @@ export const ShoppingCartContext = createContext<ShoppingCartContextProps>({
   handleMobileSearchBarActive: ()=>{},
   setExtended: ()=>{},
   setTab: ()=>{},
-  handleItemClick: ()=>{},
+  /* handleItemClick: ()=>{}, */
   handleItemQuantity: ()=>{},
-  handleCategoryClick: ()=>{},
+/*   handleCategoryClick: ()=>{},
+ */  setFilteredItems: ()=>{}
 });
 
 export const useShoppingCart = () => useContext(ShoppingCartContext);
 
 export function ShoppingCartProvider({ children }: { children: React.ReactNode }) {
-  const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [cartItems, setCartItems] = useState<Cart[]>([]);
   const [basket, setBasket] = useState(false);
   const [category, setCategory] = useState('');
   const [items, setItems] = useState<Product[]>([]);
@@ -87,69 +82,46 @@ export function ShoppingCartProvider({ children }: { children: React.ReactNode }
   const path = usePathname();
   useEffect(() => {    
     async function fetchData(){
-      const data = await GetData();
+      const data = await GetProducts();
       setAllItems(data);
-
-
-      let filteredData;
-    switch (path) {
-      case '/products/men':
-        filteredData = data.filter((item:Product) => item.category === "men's clothing" || item.category === 'jewelery');
-        break;
-      case '/products/women':
-        let filteredData1 = data.filter((item:Product) => item.category === "women's clothing");
-        let filteredData2 = data.filter((item:Product) => item.category === 'jewelery');
-        filteredData = [...filteredData1, ...filteredData2];
-        break;
-      case '/products/jewelery':
-        filteredData = data.filter((item:Product) => item.category === 'jewelery');
-        break;
-      case '/products/electronics':
-        filteredData = data.filter((item:Product) => item.category === 'electronics');
-        break;
-      default:
-        filteredData = data;
-    }
-    
-    setItems(filteredData);
+      console.log('data', data);
+      
   }
       
 fetchData();
   }, []);
-
+/* 
 const handleCategoryClick = (category:string)=>{
   let filteredData;
   switch (category) {
-    case 'men&jewelery':
-      filteredData = allItems.filter((item:Product) => item.category === "men's clothing" || item.category === 'jewelery');
-      break;
-    case 'women&jewelery':
-      let filteredData1 = allItems.filter((item:Product) => item.category === "women's clothing");
-      let filteredData2 = allItems.filter((item:Product) => item.category === 'jewelery');
-      filteredData = [...filteredData1, ...filteredData2];
-      break;
     case 'men':
       filteredData = allItems.filter((item:Product) => item.category === "men's clothing");
+      setSelectedCategory('m')
+      console.log('filteredData 1', filteredData);
       break;
     case 'women':
       filteredData = allItems.filter((item:Product) => item.category === "women's clothing");
+      console.log('filteredData 2', filteredData);
+
       break;
     case 'jewelery':
-      filteredData = allItems.filter((item:Product) => item.category === 'jewelery');
+      filteredData = allItems.filter((item:Product) => item.category === "jewelery");
+      console.log('filteredData 3', filteredData);
+
       break;
     case 'electronics':
-      filteredData = allItems.filter((item:Product) => item.category === 'electronics');
+      filteredData = allItems.filter((item:Product) => item.category === "electronics");
       break;
     default:
       filteredData = allItems;
   }
   
   setItems(filteredData);
-}
+} */
 
 
 
-  const addToCart = (product: Product) => {
+  const addToCart = (product: Cart) => {
     const existingItem = cartItems.find((item)=>item.id===product.id);
     if(existingItem){
       setCartItems((prevItems)=>
@@ -205,11 +177,11 @@ const handleCategoryClick = (category:string)=>{
   const handleMobileSearchBarActive = (value:boolean) => {
     setMobileSearchBarActive(value);
 }
-const handleItemClick = (id:number) => {
+/* const handleItemClick = (id:number) => {
   const clickedItem = allItems.find((item)=>item.id===id);
   setPickedItem(clickedItem!);
   console.log(clickedItem)
-}
+} */
 const handleItemQuantity = (amount:number)=>{
   pickedItem.quantity = amount;
 }
@@ -218,8 +190,8 @@ const handleItemQuantity = (amount:number)=>{
 
   return (
     <ShoppingCartContext.Provider 
-    value={{handleItemQuantity, handleCategoryClick,
-      pickedItem, handleItemClick, selectedCategory, tab, setTab,
+    value={{handleItemQuantity, /* handleCategoryClick, */ setFilteredItems,
+      pickedItem, /* handleItemClick, */ selectedCategory, tab, setTab,
       extended, setExtended, handleMobileSearchBarActive,mobileSearchBarActive,
       searchBarActive, handleSearchBarActive, filteredItems, cartItems,
        basket, items, filterText,
