@@ -1,40 +1,28 @@
 import Link from "next/link";
-import { useShoppingCart } from "../lib/context"
-import { useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { Product } from "../lib/interfaces";
 
-export default function ItemCard(){
-    const {  items, handleItemClick} = useShoppingCart();
+
+export default function ItemCard({items}:{items:Product[]}){
     
     
       return(<>
-        {items.map((product:any)=>{
+        {items.map((product:any, index:number)=>{
             return (
-                <Link onClick={()=>handleItemClick(product.id)} key={product.title}  href={`/products/${product.id}`}>
-                <div 
-                className=" bg-slate-50 flex flex-col 
-                h-[340px] border-2 rounded-lg">
+                <Link href={`/products/${product.id}`} >
+                <div key={index}
+                className=" bg-white hover:shadow-md
+                  border rounded-lg overflow-hidden">
                     {/*img div */}
-                    <div className="mx-auto p-2 h-46">
-                          <img src={product.image } className=" h-44"></img>
+                    <div className=" relative h-48 mt-2 p-2">
+                          <img src={product.image } className=" w-full h-full object-contain   "></img>
                     </div>
                     
-                    <div className="h-full 
-                    border-0 border-t-2 
-                     p-2
-                    flex flex-col justify-between">
-                        <div className="">
-                             <h3 className="text-xs line-clamp-2">{product.title}</h3>
-                        </div>
-                        <div className="">                          
-                            <p className=" text-base font-bold">Price: ${product.price}</p>
-                        </div>
-                        
-                       
+                    <div className="p-4">
+                        <h3 className="text-lg font-semibold mb-2 truncate">{product.title}</h3>
+                        <p className="text-gray-600">${product.price.toFixed(2)}</p>
                     </div>
                 </div>
                 </Link>
-                
             )
         })}
       </>
