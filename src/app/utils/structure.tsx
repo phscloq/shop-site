@@ -2,7 +2,7 @@
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { ShoppingCartContext, ShoppingCartProvider} from "../lib/context";
-import { SearchBarMobile } from "../components/components-nav/search-bar";
+import { SearchBarMobile } from "../components/navbar-components/search-bar";
 import DarkOverlay from "../components/dark-overlay";
 import { Inter } from 'next/font/google'
 import { useContext } from "react";
@@ -20,13 +20,13 @@ const {mobileSearchBarActive} = useContext(ShoppingCartContext);
   return (
     <ShoppingCartProvider>
               
-      <body className={`${inter.className} ${mobileSearchBarActive ? 'overflow-hidden':''} lg:px-24 `}>
+      <body className={`${inter.className} ${mobileSearchBarActive ? 'overflow-hidden':''}    min-h-screen `}>
       <DarkOverlay />
       <Navbar />
       <SearchBarMobile />
       <LeftNavBarMobile />
       <div
-        className={` aria-hidden:${mobileSearchBarActive}  ${mobileSearchBarActive ? ' pointer-events-none': ' '}  px-4 md:px-8 lg:px-0`}
+        className={` aria-hidden:${mobileSearchBarActive}  ${mobileSearchBarActive ? ' pointer-events-none': ' '} max-w-6xl mx-auto  px-4 md:px-8 lg:px-0`}
       >
         <Extent />
         {children}
