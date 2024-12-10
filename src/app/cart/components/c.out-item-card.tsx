@@ -9,7 +9,7 @@ export default function CheckOutItemCard() {
             className="flex justify-between  shadow-newco rounded-xl p-6 mb-8 w-full">
                 
                 <div className="">
-                    <img src={item.image} className="h-32 max-w-[110px]"></img>
+                    <img src={item.image} alt={item.title} className="h-32 max-w-[110px]"></img>
                 </div>
 
                 <div className="flex flex-col justify-between sm:items-center max-w-[200px] ">

@@ -14,7 +14,7 @@ export default function ItemCard({items}:{items:Product[]}){
                   border rounded-lg overflow-hidden">
                     {/*img div */}
                     <div className=" relative h-48 mt-2 p-2">
-                          <img src={product.image } className=" w-full h-full object-contain   "></img>
+                          <img src={product.image } alt={product.title} className=" w-full h-full object-contain   "></img>
                     </div>
                     
                     <div className="p-4">
