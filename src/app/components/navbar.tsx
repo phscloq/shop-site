@@ -1,11 +1,12 @@
+'use client'
 
 import OrderPreview from "./order-preview"
 import { useShoppingCart } from "../lib/context";
-import SearchBar from "./components-nav/search-bar";
-import SubBar from "./components-nav/sub-bar";
-import Basket from "./components-nav/basket";
-import Logo from "./components-nav/logo";
-import SearchPopOver from "./components-nav/search-dropdown";
+import SearchBar from "./navbar-components/search-bar";
+import SubBar from "./navbar-components/categories-navbar";
+import Basket from "./navbar-components/basket";
+import Logo from "./navbar-components/logo";
+import SearchPopOver from "./navbar-components/search-dropdown";
 interface NavbarProps{
     activeLink:string;
 }
