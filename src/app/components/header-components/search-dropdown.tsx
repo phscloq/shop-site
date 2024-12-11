@@ -7,24 +7,23 @@ const {filteredItems, handleSearchBarActive} = useShoppingCart();
 
 
 return ( 
-    <div className={` min-h-[240px] max-h-80 w-full z-10 
-    overflow-auto absolute bg-slate-100  shadow-2xl sm:border border-orange-500`}>
-        <div className={`px-4 py-2`}>
-            {filteredItems.map((item:any)=>{
-                return(
+    <div className={` absolute w-full z-10 bg-white rounded-md top-12
+    shadow-lg border `}>
+            {filteredItems.map((item:any)=>
+                (
                 <Link key={item.title} 
                 onClick={()=>handleSearchBarActive(false)}
                 href={`/products/${item.id}`}
-                target="_blank" >
+                target="_blank" 
+                className="block px-4 py-2 hover:bg-gray-100">
                     
                         {item.title}
                 </Link>
 
                     
                 )
-            })}
+            )}
                
-        </div>
     </div>
 )
 }
