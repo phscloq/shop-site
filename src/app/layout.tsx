@@ -2,8 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { ShoppingCartProvider } from './lib/context';
 import { Inter } from 'next/font/google';
-import Navbar from './components/navbar';
 import Footer from './components/footer';
+import Header from './components/header';
 
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export default function RootLayout({
         <ShoppingCartProvider>
       
             <body className={`${inter.className}  min-h-screen `}>
-              <Navbar />
+              <Header />
               <main className="container mx-auto px-4 py-4  ">
                 {children}
               </main>
