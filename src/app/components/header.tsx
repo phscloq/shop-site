@@ -3,27 +3,27 @@
 import OrderPreview from "./order-preview"
 import { useShoppingCart } from "../lib/context";
 import SearchBar from "./navbar-components/search-bar";
-import SubBar from "./navbar-components/categories-navbar";
 import Basket from "./navbar-components/basket";
 import Logo from "./navbar-components/logo";
 import SearchPopOver from "./navbar-components/search-dropdown";
+import Navbar from "./navbar-components/categories-navbar";
 interface NavbarProps{
     activeLink:string;
 }
 
-export default function Navbar (){
+export default function Header (){
     const {basket} = useShoppingCart();
     return (
-            <nav className="w-full  max-h-24 pt-4   
-                bg-orange-600  text-white">
-                <div className="px-4 flex items-center justify-between gap-16">
+            <header className="  
+                bg-white shadow-md">
+                <div className="flex items-center justify-between gap-16 ">
                     <Logo />
                     <SearchBar />
                     <Basket />
                 </div>
-                <SubBar />
+                <Navbar />
                 {basket ? <OrderPreview /> : null }
-            </nav> 
+            </header> 
 
     )
 
