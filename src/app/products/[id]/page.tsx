@@ -39,7 +39,7 @@ export default function Page({params}:{
             flex flex-col justify-between">
                 {/*TITLE AND PRICE */}
                 <div className="mb-4">
-                     <h3 className=" text-lg lg:text-2xl uppercase text-orange-600 font-bold line-clamp-2">
+                     <h3 className=" text-lg lg:text-2xl uppercase text-black tracking-wide font-bold line-clamp-2">
                         {pickedItem?.title}
                     </h3>
                      <p className=" text-base font-bold">Price: ${pickedItem?.price}</p>
@@ -53,7 +53,7 @@ export default function Page({params}:{
                     <p className="">QUANTITY:</p>
                     <input 
                     className=" p-2 border
-                     border-orange-500  focus:border-none focus:border-orange-700  w-20"
+                     focus:border-none w-20"
                     type="number" 
                      value={quantityInput}
                      onChange={handleQuantityChange}
@@ -62,11 +62,11 @@ export default function Page({params}:{
                     {/*ADD TO CART BUTTON */}
                 <div>
                       <button onClick={() => handleAddToCart(pickedItem)} 
-                      className=" w-full p-2  py-3  text-orange-500
-                  active:transition  active:scale-95  
-                  duration-500 hover:bg-orange-600
-                   rounded-lg   border  shadow-md border-orange-500">
-                    Add to cart
+                      className=" w-full p-2  py-3  text-white tracking-wide
+                  active:transition  active:scale-95   bg-blue-500
+                  duration-500 hover:bg-blue-600
+                   rounded-lg     shadow-md ">
+                    Add to Cart
                     </button>
                 </div>
                
