@@ -6,13 +6,13 @@ export default function CheckOutItemCard() {
     
         {cartItems.map((item)=>(
             <div key={item.id} 
-            className="flex justify-between  shadow-newco rounded-xl p-6 mb-8 w-full">
+            className="flex justify-between border-b p-6 mb-8 w-full ">
                 
                 <div className="">
-                    <img src={item.image} alt={item.title} className="h-32 max-w-[110px]"></img>
+                    <img src={item.image} alt={item.title} className="h-32 "></img>
                 </div>
 
-                <div className="flex flex-col justify-between sm:items-center max-w-[200px] ">
+                <div className="flex flex-col justify-between   ">
                     <div> {/* Item description */}
                         <div className=" max-w-md  pl-2">
                             <h2 className="font-bold text-sm truncate sm:text-base">{item.title}</h2>
@@ -20,7 +20,7 @@ export default function CheckOutItemCard() {
                         </div>
                     </div>
 
-                    <div className="flex  justify-between">{/* Item's numbers */}
+                    <div className="flex  self-end space-x-4 ">{/* Item's numbers */}
                         <div className="flex h-9 border-2 items-center"> {/* Item quantity div */}
                                 <button className=" text-orange-500 text-lg px-2  border-0" 
                                         onClick={()=>addToCart(item)}>+</button>
