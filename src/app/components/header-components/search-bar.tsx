@@ -23,20 +23,25 @@ export default function SearchBar(){
     return (
         
        
-            <div className={`hidden sm:flex w-96 h-full relative
-              text-black   flex-initial border 
-            `} ref={searchRef}>
-                
-                <input className="w-full text-xl p-2 
-                sm:active:rounded-t-lg
-                sm:rounded-md sm:active:border sm:active:border-orange-500"
-                value={filterText}
-                onChange={(e)=>handleFilterTextChange(e)}
-                onFocus={()=>handleSearchBarActive(true)}
-                placeholder="Search for the product"
-                ></input>
-                 <img className=" absolute right-1 top-1 opacity-40"
-                    src="/svgs/search-icon.svg" width={36} height={36} alt="Search icon" />
+            <div className={`flex-1 mx-4 relative text-black`} ref={searchRef}> 
+                <input 
+                  className="w-full px-4 py-2 border rounded-md"
+                  value={filterText}
+                  type="text"
+                  onChange={(e)=>handleFilterTextChange(e)}
+                  onFocus={()=>handleSearchBarActive(true)}
+                  placeholder="Search products..."
+                  aria-label="Search products" 
+                />
+                <button>
+                  <img 
+                    className=" absolute right-1 top-1 opacity-40"
+                    src="/svgs/search-icon.svg" 
+                    width={36} height={36} 
+                    alt="Search icon" 
+                  />
+                </button>
+                 
                 {searchBarActive && filteredItems.length > 0  && <SearchDropDown /> }
             </div>
        
@@ -45,7 +50,7 @@ export default function SearchBar(){
     )
 }
 
-export function SearchBarMobile(){
+/* export function SearchBarMobile(){
     const { filterText, handleFilterTextChange,  mobileSearchBarActive, filteredItems, handleMobileSearchBarActive} = useShoppingCart();
     const mobileSearchRef = useRef<HTMLDivElement>(null)
     useEffect(() => {
@@ -79,4 +84,4 @@ return (
             </div>
         </div>
 )
-}
+} */
