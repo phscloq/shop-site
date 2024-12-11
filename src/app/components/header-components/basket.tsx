@@ -1,33 +1,24 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useShoppingCart } from "../../lib/context";
+import OrderPreview from "../order-preview";
 export default function Basket(){
-    const { cartItems, handleMobileSearchBarActive} = useShoppingCart();
+    const { cartItems, handleMobileSearchBarActive, basket} = useShoppingCart();
     const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
     return (
-        <div className="flex gap-4">
-            <button
-            onClick={()=>handleMobileSearchBarActive(true)}
-            >
-                <label htmlFor="searchbarmobile">
-                    <Image className=" sm:hidden text-white"
-                    src="/svgs/search-icon.svg" width={45} height={45} alt="Search icon" />
-                </label>
-            </button>
-            
+        <div className="relative">
             <Link 
-            className="relative"
+            className=""
             href="/cart">
-                <Image src="/svgs/shop-icon.svg" width={50} height={50} alt="Shopping basket icon" />
-                <div 
-                className="absolute top-8  z-10 bg-black rounded-full 
-                w-6 h-6  items-center flex justify-center">
+                <Image src="/svgs/shop-icon.svg" width={24} height={24} alt="Shopping basket icon" />
+                {totalItems > 0 && (
                     <span 
-                    className=" text-sm text-white">
+                    className=" absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
                         {totalItems}
                     </span>
-                </div>
+                )}
             </Link>
+            {basket && cartItems.length > 0 ? <OrderPreview /> : null }
         </div>
     )
 }
