@@ -9,10 +9,10 @@ const categories = ["men's clothing", "women's clothing", "jewelery", "electroni
 
 
 return (
-<nav className=" flex  gap-4">
+<nav className=" flex  gap-4 ">
    {categories.map((category:string, index:number)=>{
          return (
-              <Link key={index} href={`/category/${category}`} 
+              <Link key={index} href={`/category/${category.toLowerCase().replace(/ /g, '-')}`} 
               className={` uppercase cursor-pointer  text-gray-600 hover:text-gray-800
               ${selectedCategory === category } ? ' text-sky-600' : 'text-black'}`}>
                 {category}

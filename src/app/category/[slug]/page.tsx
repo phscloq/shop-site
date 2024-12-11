@@ -4,12 +4,15 @@ import ItemsGrid from "@/app/components/items-grid"
 export default  function CategoryPage({ params }: { params: { slug: string } }) {
 const {slug} = params;
  
+const decodedSlug = slug.replace(/-/g, ' ');
 
 
   return(
-    <main className="flex  min-h-80  mx-auto gap-12 mt-8 "> 
-        <ItemsGrid category={slug} />
+   <div> 
+        <h1 className="text-3xl font-bold mb-8 capitalize text-black">{decodedSlug}</h1>
 
-        </main>
+        <ItemsGrid category={decodedSlug} />
+
+        </div>
   )
 }
