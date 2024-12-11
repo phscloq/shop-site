@@ -1,16 +1,15 @@
 import Link from "next/link"
-import { useShoppingCart } from "../../lib/context";
 export default function Logo(){
-/*     const {handleCategoryClick} = useShoppingCart();
- */    return (
-        <Link className="h-full" href="/" 
-       /*  onClick={()=>handleCategoryClick('')} */
-        >
-                <div className="flex flex-col items-center w-44  h-full  lg:w-54 xl:w-auto">
-                    <span className="text-3xl lg:text-3xl xl:text-4xl">
-                        Shop Allure                       
-                    </span>
-                </div>
+    return (
+        <Link className="text-2xl  tracking-wider font-bold text-gray-800" href="/">
+            Shop Allure                               
         </Link>
     )
 }
+
+
+{/* <div className="flex  flex-col items-center w-44  h-full ">
+<h1 className=" text-black tracking-wider text-3xl lg:text-3xl xl:text-4xl">
+    Shop Allure                       
+</h1>
+</div> */}
