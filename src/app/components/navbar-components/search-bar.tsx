@@ -23,8 +23,8 @@ export default function SearchBar(){
     return (
         
        
-            <div className={`hidden sm:block w-96 h-full relative
-              text-black   flex-initial
+            <div className={`hidden sm:flex w-96 h-full relative
+              text-black   flex-initial border 
             `} ref={searchRef}>
                 
                 <input className="w-full text-xl p-2 
@@ -35,6 +35,8 @@ export default function SearchBar(){
                 onFocus={()=>handleSearchBarActive(true)}
                 placeholder="Search for the product"
                 ></input>
+                 <img className=" absolute right-1 top-1 opacity-40"
+                    src="/svgs/search-icon.svg" width={36} height={36} alt="Search icon" />
                 {searchBarActive && filteredItems.length > 0  && <SearchDropDown /> }
             </div>
        
