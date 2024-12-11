@@ -1,4 +1,4 @@
-'use client'
+/* 'use client'
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import { ShoppingCartContext, ShoppingCartProvider} from "../lib/context";
@@ -32,7 +32,7 @@ const {mobileSearchBarActive} = useContext(ShoppingCartContext);
         {children}
       </div>
       <Footer />
-      </body>
     </ShoppingCartProvider>
   );
 }
+ */
