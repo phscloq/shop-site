@@ -31,6 +31,3 @@ export default function ItemCard({items}:{items:Product[]}){
      
     
 }
-function ItemDescription(){
-  
-}
