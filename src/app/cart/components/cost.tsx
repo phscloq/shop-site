@@ -2,7 +2,6 @@ import { useShoppingCart } from "@/app/lib/context";
 
 export default function Cost(){
     const {cartItems} = useShoppingCart();
-    const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
     const cost = cartItems.reduce((total, item)=> total + (item.price * item.quantity), 0);
     return(
         <div className={` lg:w-1/4 lg:pl-4  `}>
