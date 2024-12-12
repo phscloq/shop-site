@@ -119,6 +119,7 @@ fetchData();
   const resetSearch = () => {
     setFilterText("");
     setFilteredItems([]);
+    setSearchBarActive(false);
   }
  
 
