@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import { useShoppingCart } from "../../lib/context";
 import SearchDropDown from "./search-dropdown";
+import { Search } from "lucide-react";
 
 export default function SearchBar(){
     const { filterText, handleFilterTextChange, handleSearchBarActive, searchBarActive, filteredItems, setFilteredItems} = useShoppingCart();
@@ -33,13 +34,8 @@ export default function SearchBar(){
                   placeholder="Search products..."
                   aria-label="Search products" 
                 />
-                <button>
-                  <img 
-                    className=" absolute right-1 top-1 opacity-40"
-                    src="/svgs/search-icon.svg" 
-                    width={36} height={36} 
-                    alt="Search icon" 
-                  />
+                <button className="absolute right-2 top-2" aria-label="Submit search">
+                  <Search className="w-6 h-6   text-gray-400" />
                 </button>
                  
                 {searchBarActive && filteredItems.length > 0  && <SearchDropDown /> }
