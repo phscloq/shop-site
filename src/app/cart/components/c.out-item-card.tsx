@@ -21,7 +21,7 @@ export default function CheckOutItemCard() {
                     <div className="flex  justify-between items-center mt-2 lg:mt-0">{/* Item's numbers */}
                         
                         <div className="flex h-9 border-2 items-center"> {/* Item quantity div */}
-                                <button className=" text-orange-500 text-lg px-2  border-0" 
+                                <button className=" text-gray-500 text-lg px-2  border-0" 
                                         onClick={()=>addToCart(item)}
                                     >
                                         +
@@ -29,15 +29,14 @@ export default function CheckOutItemCard() {
                                 <p className=" border-2 px-2 border-y-0  text-sm w-9 text-center">
                                     {item.quantity}
                                 </p>
-                                <button className={`text-lg px-2 
-                                border-0 ${item.quantity==1 ? ' text-gray-400 pointer-events-none' : 'text-orange-500'}`} 
+                                <button className={`text-lg px-2 border-0 text-gray-500`} 
                                 onClick={()=>deleteItem(item)}
                                 >
                                     -
                                 </button>
                         </div>
 
-                        <h3 className="text-orange-500 text-xl  px-2">
+                        <h3 className="text-blue-500 text-xl  px-2">
                                 ${item.price}
                         </h3>
                         
