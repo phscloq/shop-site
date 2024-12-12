@@ -1,6 +1,5 @@
 import { useShoppingCart } from "@/app/lib/context";
 import Link from "next/link";
-import { useState } from "react";
 
 export default function SearchDropDown(){
 const {filteredItems, handleSearchBarActive} = useShoppingCart();
