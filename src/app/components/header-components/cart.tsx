@@ -2,8 +2,8 @@ import Link from "next/link"
 import Image from "next/image"
 import { useShoppingCart } from "../../lib/context";
 import OrderPreview from "../order-preview";
-export default function Basket(){
-    const { cartItems, handleMobileSearchBarActive, basket} = useShoppingCart();
+export default function Cart(){
+    const { cartItems, basket} = useShoppingCart();
     const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
     return (
         <div className="relative">
