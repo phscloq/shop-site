@@ -3,9 +3,10 @@ import { useEffect, useRef } from "react";
 import { useShoppingCart } from "../../lib/context";
 import SearchDropDown from "./search-dropdown";
 import { Search } from "lucide-react";
+import Link from "next/link";
 
 export default function SearchBar(){
-    const { filterText, handleFilterTextChange, handleSearchBarActive, searchBarActive, filteredItems, setFilteredItems} = useShoppingCart();
+    const { filterText, handleFilterTextChange, handleSearchBarActive, searchBarActive, filteredItems, resetSearch} = useShoppingCart();
     const searchRef = useRef<HTMLDivElement>(null)
     useEffect(() => {
         console.log(searchRef.current)
@@ -19,12 +20,14 @@ export default function SearchBar(){
           document.removeEventListener('mousedown', handleClickOutside)
         }
       }, [])
-    
-    
+      
+     
+
     return (
         
        
             <div className={`flex-1 mx-4 relative text-black`} ref={searchRef}> 
+
                 <input 
                   className="w-full px-4 py-2 border rounded-md"
                   value={filterText}
@@ -34,9 +37,10 @@ export default function SearchBar(){
                   placeholder="Search products..."
                   aria-label="Search products" 
                 />
-                <button className="absolute right-2 top-2" aria-label="Submit search">
+                <Link href={`/search?q=${encodeURIComponent(filterText)}`}
+                className="absolute right-2 top-2" aria-label="Search" onClick={resetSearch}>
                   <Search className="w-6 h-6   text-gray-400" />
-                </button>
+                </Link>
                  
                 {searchBarActive && filteredItems.length > 0  && <SearchDropDown /> }
             </div>
