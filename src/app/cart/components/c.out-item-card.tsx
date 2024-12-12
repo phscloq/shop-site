@@ -1,7 +1,7 @@
 import { useShoppingCart } from "@/app/lib/context";
 
 export default function CheckOutItemCard() {
-    const {cartItems, addToCart, deleteItem} = useShoppingCart();
+    const {cartItems,updateItemQuantity} = useShoppingCart();
     return (<div className="w-full lg:w-3/4">
     
     {cartItems.map((item)=>(
@@ -22,7 +22,7 @@ export default function CheckOutItemCard() {
                         
                         <div className="flex h-9 border-2 items-center"> {/* Item quantity div */}
                                 <button className=" text-gray-500 text-lg px-2  border-0" 
-                                        onClick={()=>addToCart(item)}
+                                        onClick={()=>updateItemQuantity(item, 1)}
                                     >
                                         +
                                 </button>
@@ -30,7 +30,7 @@ export default function CheckOutItemCard() {
                                     {item.quantity}
                                 </p>
                                 <button className={`text-lg px-2 border-0 text-gray-500`} 
-                                onClick={()=>deleteItem(item)}
+                                onClick={()=>updateItemQuantity(item, -1)}
                                 >
                                     -
                                 </button>
