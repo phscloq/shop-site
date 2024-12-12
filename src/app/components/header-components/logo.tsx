@@ -1,7 +1,11 @@
+'use client'
+import { useShoppingCart } from "@/app/lib/context";
 import Link from "next/link"
 export default function Logo(){
+    const {resetSearch} = useShoppingCart();
+    
     return (
-        <Link className="text-2xl  tracking-wider font-bold text-gray-800" href="/">
+        <Link className="text-2xl  tracking-wider font-bold text-gray-800" href="/" onClick={resetSearch}>
             Shop Allure                               
         </Link>
     )
