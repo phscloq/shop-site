@@ -1,15 +1,16 @@
 import { useShoppingCart } from "@/app/lib/context";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function SearchDropDown(){
 const {filteredItems, handleSearchBarActive} = useShoppingCart();
-    
-
+const maxItems = 5;
+const limitedItems = filteredItems.slice(0, maxItems);
 
 return ( 
     <div className={` absolute w-full z-10 bg-white rounded-md top-12
     shadow-lg border `}>
-            {filteredItems.map((item:any)=>
+            {limitedItems.map((item:any)=>
                 (
                 <Link key={item.title} 
                 onClick={()=>handleSearchBarActive(false)}
