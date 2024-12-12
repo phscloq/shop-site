@@ -34,7 +34,7 @@ export default function OrderPreview() {
 
 
 function ItemCard(){
-  const { cartItems, deleteItem, addToCart } = useShoppingCart();
+  const { cartItems, updateItemQuantity } = useShoppingCart();
 return (<ul className="max-h-60 overflow-y-auto">
   {cartItems.map((item) => (
     <li key={item.id} className=" flex items-center justify-between py-2 border-b">
@@ -46,7 +46,7 @@ return (<ul className="max-h-60 overflow-y-auto">
       <div className="flex items-center ">
           {/* Item quantity div */}
           <button className={`text-gray-500 text-xl  `} 
-            onClick={()=>deleteItem(item)}
+            onClick={()=>updateItemQuantity(item, -1)}
             aria-label={`Decrease ${item.title} quantity`}
           >
             -
@@ -56,14 +56,14 @@ return (<ul className="max-h-60 overflow-y-auto">
           </span>
           <button 
             className=" text-gray-500 text-xl  " 
-            onClick={()=>addToCart(item)}
+            onClick={()=>updateItemQuantity(item, 1)}
             aria-label={`Increase ${item.title} quantity`}
           >
             +
           </button>
          {item.quantity === 1 && (
             <button className={`ml-2 text-red-500 hover:text-red-700`}
-                onClick={()=>deleteItem(item)}
+                onClick={()=>updateItemQuantity(item, -1)}
                 aria-label={`Remove ${item.title} from cart`}
             >
               x
