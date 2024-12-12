@@ -5,18 +5,18 @@ import { useState } from "react";
 export default function Page({params}:{
     params:{id:number}
 }){
-    const {allItems, handleBasketState, addToCart, handleItemQuantity} = useShoppingCart();
-    const [quantityInput, setQuantityInput] = useState(1);
+    const {allItems, handleBasketState, addToCart} = useShoppingCart();
+    const [quantity, setQuantity] = useState<number>(1);
     const pickedItem = allItems[params.id-1];
-
    
     const handleQuantityChange = (e: any) => {
-        setQuantityInput(e.target.value);
-        handleItemQuantity(e.target.value);
+        const value = Number(e.target.value);
+        setQuantity(value);
+    
       };
 
     const handleAddToCart = (product: any) => {
-        addToCart({...product, quantity: quantityInput});
+        addToCart({...product, quantity: quantity});
         handleBasketState();
       };
 
@@ -50,14 +50,20 @@ export default function Page({params}:{
                 </div>
                 {/*QUANTITY*/}
                 <div className="mb-4">
-                    <p className="">QUANTITY:</p>
-                    <input 
-                    className=" p-2 border
-                     focus:border-none w-20"
-                    type="number" 
-                     value={quantityInput}
-                     onChange={handleQuantityChange}
-                     ></input>
+                    <label htmlFor="quantity" className="block text-sm font-medium text-gray-700 mb-2">
+                        Quantity
+                    </label>
+                    <input
+                        type="number" 
+                        id="quantity"
+                        name="quantity"
+                        value={quantity}
+                        min={1}
+                        onChange={handleQuantityChange} 
+                        className=" px-3 py-2 border border-gray-300 rounded-md shadow-sm
+                        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-20"
+                        
+                    />
                 </div>
                     {/*ADD TO CART BUTTON */}
                 <div>
