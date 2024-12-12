@@ -1,5 +1,3 @@
-
-import { useShoppingCart } from "@/app/lib/context"
 import ItemsGrid from "@/app/components/items-grid"
 export default  function CategoryPage({ params }: { params: { slug: string } }) {
 const {slug} = params;
