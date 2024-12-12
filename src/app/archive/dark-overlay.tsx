@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+/* import { useEffect } from "react";
 import { useShoppingCart } from "../lib/context"
 export default function DarkOverlay(){
     const {mobileSearchBarActive, extended} = useShoppingCart();
@@ -18,4 +18,4 @@ export default function DarkOverlay(){
                     </div>
         
     )
-}
+} */

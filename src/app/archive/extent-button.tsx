@@ -1,4 +1,4 @@
-'use client'
+/* 'use client'
 
 import { useEffect } from "react";
 import { useShoppingCart } from "../lib/context";
@@ -18,4 +18,4 @@ export default function Extent(){
           </button>
             </div>
     )
-}
+} */
