@@ -1,12 +1,10 @@
 'use client'
 import { useEffect, useState } from "react";
-import { useShoppingCart } from "../lib/context";
 import ItemCard from "./item-card"
 import { Product } from "../lib/interfaces";
 import { GetSpecificCategory } from "../data/GetSpecificCategory";
 
 export default function ItemsGrid({category}:{category?:string}){
-    const {allItems} = useShoppingCart();
     const [items, setItems] = useState<Product[]>([]);
     useEffect(() => {
         const fetchItems = async () => {
