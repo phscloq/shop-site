@@ -1,4 +1,4 @@
-'use client'
+/* 'use client'
 import { useState } from "react";
 import { useShoppingCart } from "../lib/context";
 
@@ -108,4 +108,4 @@ export function LeftNavBarMobile(){
         </nav>
     )
 
-}
+} */
