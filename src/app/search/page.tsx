@@ -39,9 +39,9 @@ if(isLoading){
 }
 return (
     <div className="container mx-auto px-4 py-8 text-black">
-        <h1 className="text-3xl font-bold mb-6">Search Results for "{query}"</h1>
+        <h1 className="text-3xl font-bold mb-6">Search Results for &quot;{query}&quot;</h1>
         {searchResults.length === 0 ? (
-            <p>No results found for "{query}"</p>
+            <p>No results found for &quot;{query}&quot;</p>
         ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 text-black">
                 {searchResults.map((product:Product)=>(
